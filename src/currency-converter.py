@@ -10,12 +10,12 @@ from tkinter import messagebox
 root = tk.Tk()
 root.geometry("600x270")
 root.title("Currency Converter")
-root.iconbitmap('C:/Users/Asus/Desktop/Python_Project/assets/icon.ico')
+root.iconbitmap('assets/icon.ico')
 root.maxsize(600, 270)
 root.minsize(600, 270)
 
 # Load image for the label
-image = Image.open('C:/Users/Asus/Desktop/Python_Project/assets/currency.png')
+image = Image.open('assets/currency.png')
 zoom = 0.5
 
 # Multiply image size by zoom
@@ -84,7 +84,7 @@ def clear():
     text.delete(1.0, 'end')
 
 # Define labels and inputs
-l1 = Label(root, text="Currency Converter Using Python", font=('verdana', '10', 'bold'))
+l1 = Label(root, text="Currency Converter", font=('verdana', '10', 'bold'))
 l1.place(x=150, y=15)
 
 amt = Label(root, text="Amount", font=('roboto', 10, 'bold'))

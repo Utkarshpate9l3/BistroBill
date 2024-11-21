@@ -7,13 +7,13 @@ import subprocess  # For opening scripts via subprocess
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("green")
 
-
 # Paths to required files
 Login_page_path = "login_Page\login.py"  # Path to the signup file
 Add_Items_Path = "src\window_2_Items_modification.py"
 Notepad_Path = "src\window_4_Notepad.py"
 Calculator_path = "src\window_3_Calculator.py"
-Billeing_path = "src\window_6_Billing_Interface.py"
+Billing_path = "src\window_6_Billing_Interface.py"
+Currency_Converter_Path = "currency-converter.py"  # Path to currency converter script
 
 json_file_path = "users.json"  # JSON file with user data
 
@@ -103,14 +103,22 @@ def create_home_page():
         command=lambda: run_script(Add_Items_Path),  # Replace with the relative path to the add items script
         **button_params
     )
-    button3.grid(row=1, column=0, padx=20, pady=20)
+    button3.grid(row=2, column=0, padx=20, pady=20)
 
     button4 = customtkinter.CTkButton(
         text="Create Bill", fg_color="#EA4335", text_color="white",
-        command=lambda: run_script(Billeing_path),  # Replace with the relative path to the create bill script
+        command=lambda: run_script(Billing_path),  # Replace with the relative path to the create bill script
         **button_params
     )
-    button4.grid(row=1, column=1, padx=20, pady=20)
+    button4.grid(row=2, column=1, padx=20, pady=20)
+
+    # Add Currency Converter button
+    button5 = customtkinter.CTkButton(
+        text="Currency Converter", fg_color="#A349A4", text_color="white",
+        command=lambda: run_script(Currency_Converter_Path),  # Path to currency converter script
+        **button_params
+    )
+    button5.grid(row=1, column=0, columnspan=2, pady=20)  # Middle alignment spanning two columns
 
     # Logout button
     logout_button = customtkinter.CTkButton(

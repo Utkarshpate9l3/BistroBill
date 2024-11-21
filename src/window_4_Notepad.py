@@ -76,7 +76,8 @@ class Notepad:
         showinfo("Notepad", "Custom Notepad Application")
 
     def __openFile(self):
-        self.__file = askopenfilename(defaultextension=".txt", filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")])
+        self.__file = askopenfilename(defaultextension=".txt",
+         filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")])
         if self.__file:
             self.__root.title(os.path.basename(self.__file) + " - Notepad")
             self.__thisTextArea.delete(1.0, END)
@@ -90,7 +91,8 @@ class Notepad:
 
     def __saveFile(self):
         if not self.__file:
-            self.__file = asksaveasfilename(initialfile='Untitled.txt', defaultextension=".txt", filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")])
+            self.__file = asksaveasfilename(initialfile='Untitled.txt',
+                defaultextension=".txt", filetypes=[("All Files", "*.*"), ("Text Documents", "*.txt")])
             if not self.__file:
                 return
         with open(self.__file, "w") as file:
