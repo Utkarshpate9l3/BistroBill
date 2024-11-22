@@ -75,7 +75,7 @@ def return_to_login():
 
 # Attempt to load the background image
 try:
-    img1 = customtkinter.CTkImage(Image.open("C:/Users/Asus/Desktop/Python_Project/assets/pattern.png"), size=(600, 500))
+    img1 = customtkinter.CTkImage(Image.open("assets/pattern.png"), size=(600, 500))
     l1 = customtkinter.CTkLabel(master=app, image=img1)
     l1.pack()
 except Exception as e:

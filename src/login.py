@@ -54,7 +54,7 @@ def open_signup_page():
 
 # Load background image
 try:
-    img1 = customtkinter.CTkImage(Image.open("C:/Users/Asus/Desktop/Python_Project/assets/pattern.png"), size=(600, 440))
+    img1 = customtkinter.CTkImage(Image.open("assets/pattern.png"), size=(600, 440))
     l1 = customtkinter.CTkLabel(master=app, image=img1)
     l1.pack()
 except Exception as e:
@@ -95,8 +95,8 @@ button_signup.place(x=50, y=290)
 
 # Load social media icons
 try:
-    img2 = customtkinter.CTkImage(Image.open("C:/Users/Asus/Desktop/Python_Project/assets/Google__G__Logo.svg.webp").resize((20, 20), Image.LANCZOS))
-    img3 = customtkinter.CTkImage(Image.open("C:/Users/Asus/Desktop/Python_Project/assets/124010.png").resize((20, 20), Image.LANCZOS))
+    img2 = customtkinter.CTkImage(Image.open("assets/Google__G__Logo.svg.webp").resize((20, 20), Image.LANCZOS))
+    img3 = customtkinter.CTkImage(Image.open("assets/124010.png").resize((20, 20), Image.LANCZOS))
     pass
 except Exception as e:
     print(f"Error loading social icons: {e}")
