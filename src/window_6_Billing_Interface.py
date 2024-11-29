@@ -99,7 +99,8 @@ class CheckoutPad:
         self.save_button = tk.Button(root, text="Save", command=self.save_bill)
         self.save_button.grid(row=3, column=1, pady=10)
 
-        self.send_button = tk.Button(root, text="Send", command=self.open_send_window)
+        # self.send_button = tk.Button(root, text="Send", command=self.open_send_window)
+        self.send_button = tk.Button(root, text="Send", state=tk.DISABLED)
         self.send_button.grid(row=3, column=2, pady=10)
 
         self.exit_button = tk.Button(root, text="Exit", command=root.quit)
@@ -173,78 +174,78 @@ class CheckoutPad:
     # def send_bill(self):
     #     # Placeholder for sending the bill (e.g., via email or other means)
     #     messagebox.showinfo("Send", "Bill sent successfully (feature not implemented).")
-    def open_send_window(self):
-    # Create a new window for sending the bill
-        send_root = tk.Toplevel(self.root)
-        send_root.geometry('400x500')  # Increased the overall window size
-        send_root['bg'] = "white"
+    # def open_send_window(self):
+    # # Create a new window for sending the bill
+    #     send_root = tk.Toplevel(self.root)
+    #     send_root.geometry('400x500')  # Increased the overall window size
+    #     send_root['bg'] = "white"
         
-        # Frame for header
-        frame4 = Frame(send_root, width=400, height=80, relief=RIDGE, borderwidth=5, bg='#248aa2', highlightbackground="white", highlightcolor="white", highlightthickness=2)
-        frame4.place(x=0, y=0)
+    #     # Frame for header
+    #     frame4 = Frame(send_root, width=400, height=80, relief=RIDGE, borderwidth=5, bg='#248aa2', highlightbackground="white", highlightcolor="white", highlightthickness=2)
+    #     frame4.place(x=0, y=0)
                 
-        l2 = Label(frame4, text="Send Bill", font=('roboto', 24, 'bold'), bg='#248aa2', fg="#ffffff")
-        l2.place(x=135, y=15)
+    #     l2 = Label(frame4, text="Send Bill", font=('roboto', 24, 'bold'), bg='#248aa2', fg="#ffffff")
+    #     l2.place(x=135, y=15)
 
-        # Frame for main content
-        frame5 = Frame(send_root, width=400, height=420, relief=RIDGE, borderwidth=5, bg='#248aa2', highlightbackground="white", highlightcolor="white", highlightthickness=2)
-        frame5.place(x=0, y=80)
+    #     # Frame for main content
+    #     frame5 = Frame(send_root, width=400, height=420, relief=RIDGE, borderwidth=5, bg='#248aa2', highlightbackground="white", highlightcolor="white", highlightthickness=2)
+    #     frame5.place(x=0, y=80)
 
-        innerframe5 = Frame(frame5, width=380, height=400, relief=RIDGE, borderwidth=3, bg='#248aa2', highlightbackground="white", highlightcolor="white", highlightthickness=2)        
-        innerframe5.place(x=5, y=5)
+    #     innerframe5 = Frame(frame5, width=380, height=400, relief=RIDGE, borderwidth=3, bg='#248aa2', highlightbackground="white", highlightcolor="white", highlightthickness=2)        
+    #     innerframe5.place(x=5, y=5)
 
-        # Label and Entry for phone number
-        l4 = Label(innerframe5, text="Phone Number", font=('verdana', 10, 'bold'))
-        l4.place(x=55, y=30)
+    #     # Label and Entry for phone number
+    #     l4 = Label(innerframe5, text="Phone Number", font=('verdana', 10, 'bold'))
+    #     l4.place(x=55, y=30)
 
-        number = Entry(innerframe5, width=40, borderwidth=2)  # Adjusted width to fit new frame size
-        number.place(x=55, y=60)
+    #     number = Entry(innerframe5, width=40, borderwidth=2)  # Adjusted width to fit new frame size
+    #     number.place(x=55, y=60)
         
-        # Label and ScrolledText for bill details
-        l5 = Label(innerframe5, text="Bill Details", font=('verdana', 10, 'bold'))
-        l5.place(x=55, y=100)
+    #     # Label and ScrolledText for bill details
+    #     l5 = Label(innerframe5, text="Bill Details", font=('verdana', 10, 'bold'))
+    #     l5.place(x=55, y=100)
 
-        b_detail = scrolledtext.ScrolledText(innerframe5, width=32, height=12, relief=RIDGE, borderwidth=3)  # Increased width and height to fill frame
-        b_detail.place(x=55, y=130)
+    #     b_detail = scrolledtext.ScrolledText(innerframe5, width=32, height=12, relief=RIDGE, borderwidth=3)  # Increased width and height to fill frame
+    #     b_detail.place(x=55, y=130)
         
-        # Insert the bill details from the main window
-        b_detail.insert("1.0", self.bill_text.get("1.0", tk.END))
+    #     # Insert the bill details from the main window
+    #     b_detail.insert("1.0", self.bill_text.get("1.0", tk.END))
 
-        # Send function to trigger SMS
-        def send_bill():
-            ph_number = number.get()
-            messages = b_detail.get("1.0", "end-1c")
+    #     # Send function to trigger SMS
+    #     def send_bill():
+    #         ph_number = number.get()
+    #         messages = b_detail.get("1.0", "end-1c")
 
-            if ph_number == "":
-                messagebox.showerror("Error", 'Please fill the phone number')
-            elif messages == "":
-                messagebox.showerror("Error", 'Bill Details is empty')
-            else:
-                try:
-                    url = "https://www.fast2sms.com/dev/bulk"
-                    api_key = ""  # Place your Fast2SMS API key here
-                    querystring = {
-                        "authorization": api_key,
-                        "sender_id": "FSTSMS",
-                        "message": messages,
-                        "language": "english",
-                        "route": "p",
-                        "numbers": ph_number
-                    }
-                    headers = {'cache-control': "no-cache"}
-                    response = requests.get(url, headers=headers, params=querystring)
+    #         if ph_number == "":
+    #             messagebox.showerror("Error", 'Please fill the phone number')
+    #         elif messages == "":
+    #             messagebox.showerror("Error", 'Bill Details is empty')
+    #         else:
+    #             try:
+    #                 url = "https://www.fast2sms.com/dev/bulk"
+    #                 api_key = ""  # Place your Fast2SMS API key here
+    #                 querystring = {
+    #                     "authorization": api_key,
+    #                     "sender_id": "FSTSMS",
+    #                     "message": messages,
+    #                     "language": "english",
+    #                     "route": "p",
+    #                     "numbers": ph_number
+    #                 }
+    #                 headers = {'cache-control': "no-cache"}
+    #                 response = requests.get(url, headers=headers, params=querystring)
                     
-                    if response.status_code == 200:
-                        messagebox.showinfo("Send SMS", 'Bill has been sent successfully')
-                    else:
-                        messagebox.showerror("Error", 'Failed to send SMS')
+    #                 if response.status_code == 200:
+    #                     messagebox.showinfo("Send SMS", 'Bill has been sent successfully')
+    #                 else:
+    #                     messagebox.showerror("Error", 'Failed to send SMS')
 
-                except Exception as e:
-                    messagebox.showerror("Error", f"An error occurred: {str(e)}")
+    #             except Exception as e:
+    #                 messagebox.showerror("Error", f"An error occurred: {str(e)}")
                 
-        # Button to send the message
-        send_msg = Button(innerframe5, text="Send Bill", relief=tk.RAISED, borderwidth=2, font=('verdana', 10, 'bold'), bg='#248aa2', fg="white", padx=20, command=send_bill)
-        send_msg.place(x=140, y=350)
+    #     # Button to send the message
+    #     send_msg = Button(innerframe5, text="Send Bill", relief=tk.RAISED, borderwidth=2, font=('verdana', 10, 'bold'), bg='#248aa2', fg="white", padx=20, command=send_bill)
+    #     send_msg.place(x=140, y=350)
 # Run the app
 root = tk.Tk()
 app = CheckoutPad(root)

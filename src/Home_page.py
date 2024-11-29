@@ -13,7 +13,7 @@ Add_Items_Path = "src\window_2_Items_modification.py"
 Notepad_Path = "src\window_4_Notepad.py"
 Calculator_path = "src\window_3_Calculator.py"
 Billing_path = "src\window_6_Billing_Interface.py"
-Currency_Converter_Path = "currency-converter.py"  # Path to currency converter script
+Currency_Converter_Path = "src\currency-converter.py"  # Path to currency converter script
 
 json_file_path = "users.json"  # JSON file with user data
 
